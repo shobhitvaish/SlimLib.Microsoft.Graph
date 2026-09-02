@@ -8,6 +8,7 @@ namespace SlimLib.Microsoft.Graph
     public interface ISlimGraphClient
     {
         ISlimGraphAdministrativeUnitsClient AdministrativeUnits { get; }
+        ISlimGraphAndroidManagedStoreClient AndroidManagedStore { get; }
         ISlimGraphApplicationsClient Applications { get; }
         ISlimGraphAuditEventsClient AuditEvents { get; }
         ISlimGraphAuditLogsClient AuditLogs { get; }
