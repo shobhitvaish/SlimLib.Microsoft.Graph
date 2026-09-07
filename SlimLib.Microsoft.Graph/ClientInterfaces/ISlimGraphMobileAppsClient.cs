@@ -17,6 +17,11 @@ namespace SlimLib.Microsoft.Graph
         GraphArrayOperation<JsonDocument> GetMobileAppsAsync(IAzureTenant tenant, ListRequestOptions? options = default, CancellationToken cancellationToken = default);
         GraphArrayOperation<JsonDocument> GetMobileAppAssignmentsAsync(IAzureTenant tenant, Guid appID, ListRequestOptions? options = default, CancellationToken cancellationToken = default);
 
+        GraphOperation<JsonDocument?> GetMobileAppAssignmentAsync(IAzureTenant tenant, Guid appID, string assignmentID, ScalarRequestOptions? options = default, CancellationToken cancellationToken = default);
+        GraphOperation<JsonDocument?> CreateMobileAppAssignmentAsync(IAzureTenant tenant, Guid appID, JsonObject data, InvokeRequestOptions? options = default, CancellationToken cancellationToken = default);
+        GraphOperation<JsonDocument?> UpdateMobileAppAssignmentAsync(IAzureTenant tenant, Guid appID, string assignmentID, JsonObject data, InvokeRequestOptions? options = default, CancellationToken cancellationToken = default);
+        GraphOperation DeleteMobileAppAssignmentAsync(IAzureTenant tenant, Guid appID, string assignmentID, InvokeRequestOptions? options = default, CancellationToken cancellationToken = default);
+
         GraphOperation<JsonDocument?> GetMobileAppContentAsync(IAzureTenant tenant, Guid appID, string type, string mobileAppContentID, ScalarRequestOptions? options = default, CancellationToken cancellationToken = default);
         Task<string> CreateMobileAppContentAsync(IAzureTenant tenant, Guid appID, string type, InvokeRequestOptions? options = default, CancellationToken cancellationToken = default);
         Task CommitMobileAppContentAsync(IAzureTenant tenant, Guid appID, string type, string mobileAppContentID, InvokeRequestOptions? options = default, CancellationToken cancellationToken = default);
