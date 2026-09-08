@@ -54,6 +54,34 @@ namespace SlimLib.Microsoft.Graph
             return new(this, tenant, HttpMethod.Get, nextLink, options, default, static doc => doc);
         }
 
+        GraphOperation<JsonDocument?> ISlimGraphMobileAppsClient.GetMobileAppAssignmentAsync(IAzureTenant tenant, Guid appID, string assignmentID, ScalarRequestOptions? options, CancellationToken cancellationToken)
+        {
+            var link = ODataLinkBuilder.BuildLink(options, $"deviceAppManagement/mobileApps/{appID}/assignments/{assignmentID}");
+
+            return new(this, tenant, HttpMethod.Get, link, options, default, static doc => doc);
+        }
+
+        GraphOperation<JsonDocument?> ISlimGraphMobileAppsClient.CreateMobileAppAssignmentAsync(IAzureTenant tenant, Guid appID, JsonObject data, InvokeRequestOptions? options, CancellationToken cancellationToken)
+        {
+            var link = ODataLinkBuilder.BuildLink(options, $"deviceAppManagement/mobileApps/{appID}/assignments");
+
+            return new(this, tenant, HttpMethod.Post, link, options, JsonSerializer.SerializeToUtf8Bytes(data), static doc => doc);
+        }
+
+        GraphOperation<JsonDocument?> ISlimGraphMobileAppsClient.UpdateMobileAppAssignmentAsync(IAzureTenant tenant, Guid appID, string assignmentID, JsonObject data, InvokeRequestOptions? options, CancellationToken cancellationToken)
+        {
+            var link = ODataLinkBuilder.BuildLink(options, $"deviceAppManagement/mobileApps/{appID}/assignments/{assignmentID}");
+
+            return new(this, tenant, HttpMethod.Patch, link, options, JsonSerializer.SerializeToUtf8Bytes(data), static doc => doc);
+        }
+
+        GraphOperation ISlimGraphMobileAppsClient.DeleteMobileAppAssignmentAsync(IAzureTenant tenant, Guid appID, string assignmentID, InvokeRequestOptions? options, CancellationToken cancellationToken)
+        {
+            var link = ODataLinkBuilder.BuildLink(options, $"deviceAppManagement/mobileApps/{appID}/assignments/{assignmentID}");
+
+            return new(this, tenant, HttpMethod.Delete, link, options, default);
+        }
+
 
         GraphOperation<JsonDocument?> ISlimGraphMobileAppsClient.GetMobileAppContentAsync(IAzureTenant tenant, Guid appID, string type, string mobileAppContentID, ScalarRequestOptions? options, CancellationToken cancellationToken)
         {
